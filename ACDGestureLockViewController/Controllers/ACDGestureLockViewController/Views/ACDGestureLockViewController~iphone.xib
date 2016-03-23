@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ACDGestureLockViewController">
+            <connections>
+                <outlet property="label" destination="IKU-pI-PrW" id="C1a-QS-Sn6"/>
+                <outlet property="lockView" destination="xvo-rK-rQJ" id="YuK-t4-c1a"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xRT-Ze-Xl3" userLabel="infoView" customClass="ACDGestureLockThumbnailView">
+                    <rect key="frame" x="168" y="90" width="80" height="80"/>
+                    <animations/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="ls0-g7-2hU"/>
+                        <constraint firstAttribute="height" constant="80" id="nnO-lD-T0y"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入密码时的提示信息" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IKU-pI-PrW" customClass="ACDGestureLockLabel">
+                    <rect key="frame" x="82" y="180" width="250" height="21"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="Vqc-Df-oVE"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xvo-rK-rQJ" customClass="ACDGestureLockView">
+                    <rect key="frame" x="47" y="221" width="320" height="320"/>
+                    <animations/>
+                    <color key="backgroundColor" red="1" green="0.43814792860000001" blue="0.16081187920000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="500" id="TZZ-u3-kuC"/>
+                        <constraint firstAttribute="height" constant="320" id="bq0-oX-V76"/>
+                        <constraint firstAttribute="height" constant="500" id="p52-4P-Tfy"/>
+                        <constraint firstAttribute="width" constant="320" id="rVJ-Kd-749"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="TZZ-u3-kuC"/>
+                            <exclude reference="p52-4P-Tfy"/>
+                        </mask>
+                    </variation>
+                </view>
+            </subviews>
+            <animations/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="IKU-pI-PrW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="FXx-4C-EJ2"/>
+                <constraint firstItem="xvo-rK-rQJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="H0K-9E-qe7"/>
+                <constraint firstItem="xRT-Ze-Xl3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="90" id="VlR-bH-zfT"/>
+                <constraint firstItem="xvo-rK-rQJ" firstAttribute="top" secondItem="IKU-pI-PrW" secondAttribute="bottom" constant="30" id="ciS-f6-dI4"/>
+                <constraint firstItem="IKU-pI-PrW" firstAttribute="top" secondItem="xRT-Ze-Xl3" secondAttribute="bottom" constant="10" id="hYq-gL-OXb"/>
+                <constraint firstItem="xRT-Ze-Xl3" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="1" id="nz2-CV-MqR"/>
+                <constraint firstItem="xvo-rK-rQJ" firstAttribute="top" secondItem="IKU-pI-PrW" secondAttribute="bottom" constant="20" id="yX9-gQ-5lx"/>
+                <constraint firstItem="xvo-rK-rQJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="zc8-iT-eZV"/>
+            </constraints>
+            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="H0K-9E-qe7"/>
+                    <exclude reference="ciS-f6-dI4"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="450" y="141"/>
+        </view>
+    </objects>
+</document>
