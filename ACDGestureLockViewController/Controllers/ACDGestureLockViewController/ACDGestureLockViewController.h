@@ -11,16 +11,14 @@
 typedef NS_ENUM(NSInteger, GestureLockType) {
     //设置密码
     GestureLockTypeSetPwd,
-    //输入并验证密码
+    //验证密码
     GestureLockTypeVeryfiPwd,
     //修改密码
     GestureLockTypeModifyPwd,
 };
 
 @interface ACDGestureLockViewController : UIViewController
-
 @property (nonatomic, assign) GestureLockType type;
-
 @property (nonatomic, strong) NSString *correctPwd;
 
 /**

@@ -15,32 +15,23 @@
     NSString *userPassword; //临时存储用户设置的密码
 }
 
-// 操作成功：密码设置成功、密码验证成功
-// 定义一些代码块
+#pragma mark - Block
 @property (nonatomic, copy) void (^successBlock)
     (ACDGestureLockViewController *lockVC, NSString *pwd);
-
 @property (nonatomic, copy) void (^forgetPwdBlock)();
 
-@property (weak, nonatomic) IBOutlet ACDGestureLockLabel *label;
-
+#pragma mark -
 @property (nonatomic, copy) NSString *msg;
-
-@property (weak, nonatomic) IBOutlet ACDGestureLockView *lockView;
-
 @property (nonatomic, weak) UIViewController *vc;
-
 @property (nonatomic, strong) UIBarButtonItem *resetItem;
-
 @property (strong, nonatomic) UIBarButtonItem *forgetItem;
-
 @property (nonatomic, copy) NSString *modifyCurrentTitle;
-
+@property (weak, nonatomic) IBOutlet ACDGestureLockLabel *label;
+@property (weak, nonatomic) IBOutlet ACDGestureLockView *lockView;
 @end
 
 @implementation ACDGestureLockViewController
-
-#pragma mark - UIView
+#pragma mark - Life Cycle
 - (BOOL)shouldAutorotate {
     return YES;
 }
@@ -67,26 +58,16 @@
     [self event];
 }
 
-#pragma mark - private methods
+#pragma mark - Private Methods
 //控制器准备
 - (void)vcPrepare {
     //设置背景色
     self.view.backgroundColor = ACDGestureLockViewBgColor;
-    //初始情况隐藏
-    self.navigationItem.rightBarButtonItem = nil;
-    //默认标题
-    self.modifyCurrentTitle = GestureLockModifyNormalTitle;
-    self.navigationItem.leftBarButtonItem =
-        [[UIBarButtonItem alloc] initWithTitle:@"关闭"
-                                         style:UIBarButtonItemStylePlain
-                                        target:self
-                                        action:@selector(dismiss)];
 }
 
 //数据传输
 - (void)dataTransfer {
     [self.label showNormalMsg:self.msg];
-    //传递类型
     self.lockView.type = self.type;
 }
 
@@ -125,7 +106,8 @@
 
         //禁用交互
         self.view.userInteractionEnabled = NO;
-        if (_successBlock != nil) _successBlock(self, pwd);
+        if (_successBlock != nil)
+            _successBlock(self, pwd);
         if (GestureLockTypeModifyPwd == _type) {
             dispatch_after(
                 dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5f * NSEC_PER_SEC)),
@@ -157,7 +139,8 @@
                 self.modifyCurrentTitle = GestureLockPWDTitleFirst;
             }
             if (GestureLockTypeVeryfiPwd == _type) {
-                if (_successBlock != nil) _successBlock(self, pwd);
+                if (_successBlock != nil)
+                    _successBlock(self, pwd);
             }
         } else {
             //密码错误
@@ -208,10 +191,11 @@
 
 - (void)onForgetPwd {
     [self dismiss:0];
-    if (_forgetPwdBlock != nil) _forgetPwdBlock();
+    if (_forgetPwdBlock != nil)
+        _forgetPwdBlock();
 }
 
-#pragma mark - access methods
+#pragma mark - Access Methods
 //重置按钮
 - (UIBarButtonItem *)resetItem {
     if (_resetItem == nil) {
@@ -237,7 +221,7 @@
     return _forgetItem;
 }
 
-#pragma mark - public methods
+#pragma mark - Public Methods
 // 展示设置密码控制器
 + (instancetype)showSettingLockVCInVC:(UIViewController *)vc
                          successBlock:
@@ -301,11 +285,10 @@
 }
 
 - (void)dismiss:(NSTimeInterval)interval {
-    self.navigationItem.rightBarButtonItem = nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - unuse metods
+#pragma mark - Unuse Methods
 - (IBAction)modifyPwdAction:(id)sender {
     ACDGestureLockViewController *lockVC =
         [[ACDGestureLockViewController alloc] init];

@@ -9,8 +9,9 @@
 #import "ACDGestureLockViewController.h"
 #import "RootViewController.h"
 
-@interface RootViewController ()
-
+@interface RootViewController () {
+    NSString *userPwd;
+}
 @end
 
 @implementation RootViewController
@@ -49,7 +50,8 @@
                  successBlock:^(ACDGestureLockViewController *lockVC,
                                 NSString *pwd) {
                      //获取用户设置的密码
-                     NSLog(@"%@", [lockVC userPwd]);
+                     userPwd = [lockVC userPwd];
+                     NSLog(@"%@", userPwd);
                      [lockVC dismiss:1.0f];
                  }];
     [self.navigationController pushViewController:gestureVC animated:YES];
@@ -58,10 +60,9 @@
 - (IBAction)onVerifyPwd:(UIButton *)sender {
     ACDGestureLockViewController *gestureVC = [ACDGestureLockViewController
         showVerifyLockVCInVC:self
-        correctPassword:@"03678"
+        correctPassword:userPwd
         forgetPwdBlock:^{
             NSLog(@"忘记密码");
-            [self forgetPwd];
         }
         successBlock:^(ACDGestureLockViewController *lockVC, NSString *pwd) {
             NSLog(@"密码正确");
@@ -73,27 +74,14 @@
 - (IBAction)onFindPwd:(UIButton *)sender {
     ACDGestureLockViewController *gestureVC = [ACDGestureLockViewController
         showModifyLockVCInVC:self
-        correctPassword:@"03678"
+        correctPassword:userPwd
         forgetPwdBlock:^{
             NSLog(@"忘记密码");
-            [self forgetPwd];
         }
         successBlock:^(ACDGestureLockViewController *lockVC, NSString *pwd) {
             NSLog(@"%@", [lockVC userPwd]);
             [lockVC dismiss:1.0f];
         }];
-    [self.navigationController pushViewController:gestureVC animated:YES];
-}
-
-- (void)forgetPwd {
-    ACDGestureLockViewController *gestureVC = [ACDGestureLockViewController
-        showSettingLockVCInVC:self
-                 successBlock:^(ACDGestureLockViewController *lockVC,
-                                NSString *pwd) {
-                     //获取用户设置的密码
-                     NSLog(@"%@", [lockVC userPwd]);
-                     [lockVC dismiss:1.0f];
-                 }];
     [self.navigationController pushViewController:gestureVC animated:YES];
 }
 
