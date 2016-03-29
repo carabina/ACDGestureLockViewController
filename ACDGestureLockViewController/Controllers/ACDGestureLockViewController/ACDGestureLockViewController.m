@@ -24,10 +24,10 @@
 @property (nonatomic, copy) NSString *msg;
 @property (nonatomic, weak) UIViewController *vc;
 @property (nonatomic, strong) UIBarButtonItem *resetItem;
-@property (strong, nonatomic) UIBarButtonItem *forgetItem;
+@property (nonatomic, strong) UIBarButtonItem *forgetItem;
 @property (nonatomic, copy) NSString *modifyCurrentTitle;
-@property (weak, nonatomic) IBOutlet ACDGestureLockLabel *label;
-@property (weak, nonatomic) IBOutlet ACDGestureLockView *lockView;
+@property (nonatomic, weak) IBOutlet ACDGestureLockLabel *label;
+@property (nonatomic, weak) IBOutlet ACDGestureLockView *lockView;
 @end
 
 @implementation ACDGestureLockViewController
@@ -151,7 +151,7 @@
 
     //修改
     self.lockView.modifyPwdBlock = ^() {
-        [self.label showNormalMsg:self.modifyCurrentTitle];
+        [self.label showNormalMsg:self.msg];
         self.navigationItem.rightBarButtonItem = self.forgetItem;
     };
 }

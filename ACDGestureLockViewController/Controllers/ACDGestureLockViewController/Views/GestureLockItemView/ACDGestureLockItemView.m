@@ -51,7 +51,8 @@
 
 //上下文旋转
 - (void)transFormCtx:(CGContextRef)ctx rect:(CGRect)rect {
-    if (self.direct == 0) return;
+    if (self.direct == 0)
+        return;
     CGFloat translateXY = rect.size.width * 0.5f;
     //平移
     CGContextTranslateCTM(ctx, translateXY, translateXY);
@@ -62,7 +63,8 @@
 
 //三角形：方向标识
 - (void)directFlag:(CGContextRef)ctx rect:(CGRect)rect {
-    if (self.direct == 0) return;
+    if (self.direct == 0)
+        return;
     //新建路径：三角形
     CGMutablePathRef trianglePathM = CGPathCreateMutable();
     CGFloat marginSelectedCirclev = 4.0f;

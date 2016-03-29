@@ -30,7 +30,7 @@
 
 @implementation ACDGestureLockView
 
-#pragma mark - init
+#pragma mark - Life Cycle
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -47,7 +47,7 @@
     return self;
 }
 
-#pragma mark - UIView
+#pragma mark - UIView Layout
 //通过计算，实现视图布局
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -65,17 +65,7 @@
     }];
 }
 
-#pragma mark - private methods
-- (void)checkDevice {
-    NSString *deviceType = [UIDevice currentDevice].model;
-
-    if ([deviceType rangeOfString:@"iPad"].location != NSNotFound) {
-        CircleMarginValue = CircleMarginValueforIpad;
-    } else if ([deviceType rangeOfString:@"iPhone"].location != NSNotFound) {
-        CircleMarginValue = CircleMarginValueforIphone;
-    }
-}
-
+#pragma mark - Private Methods
 - (void)lockViewPrepare {
     self.backgroundColor = [UIColor clearColor];
     for (NSUInteger i = 0; i < 9; i++) {
@@ -87,20 +77,33 @@
     [self checkDevice];
 }
 
+- (void)checkDevice {
+    NSString *deviceType = [UIDevice currentDevice].model;
+    if ([deviceType rangeOfString:@"iPad"].location != NSNotFound) {
+        CircleMarginValue = CircleMarginValueforIpad;
+    } else if ([deviceType rangeOfString:@"iPhone"].location != NSNotFound) {
+        CircleMarginValue = CircleMarginValueforIphone;
+    }
+}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     //解锁处理
     [self lockHandle:touches];
     //设置密码
     if (GestureLockTypeSetPwd == _type) {
         if (self.firstRightPWD == nil) { //第一次输入
-            if (_setPWBeginBlock != nil) _setPWBeginBlock();
+            if (_setPWBeginBlock != nil)
+                _setPWBeginBlock();
         } else {
-            if (_setPWConfirmlock != nil) _setPWConfirmlock();
+            if (_setPWConfirmlock != nil)
+                _setPWConfirmlock();
         }
     } else if (GestureLockTypeVeryfiPwd == _type) { //验证密码
-        if (_verifyPWBeginBlock != nil) _verifyPWBeginBlock();
+        if (_verifyPWBeginBlock != nil)
+            _verifyPWBeginBlock();
     } else if (GestureLockTypeModifyPwd == _type) { //修改密码
-        if (_modifyPwdBlock != nil) _modifyPwdBlock();
+        if (_modifyPwdBlock != nil)
+            _modifyPwdBlock();
     }
 }
 
@@ -150,7 +153,8 @@
         //设置密码
         [self setpwd];
     } else if (GestureLockTypeVeryfiPwd == _type) { //验证密码
-        if (_verifyPwdBlock != nil) _verifyPwdBlock(self.pwdM);
+        if (_verifyPwdBlock != nil)
+            _verifyPwdBlock(self.pwdM);
     } else if (GestureLockTypeModifyPwd == _type) { //修改密码
         if (!_modify_VeriryOldRight) {
             if (_verifyPwdBlock != nil) {
@@ -168,7 +172,8 @@
     //密码合法
     if (self.firstRightPWD == nil) { // 第一次设置密码
         self.firstRightPWD = self.pwdM;
-        if (_setPWFirstRightBlock != nil) _setPWFirstRightBlock();
+        if (_setPWFirstRightBlock != nil)
+            _setPWFirstRightBlock();
     } else {
         if (![self.firstRightPWD isEqualToString:self.pwdM]) {
             //两次密码不一致
@@ -189,9 +194,11 @@
     CGPoint loc = [touch locationInView:self];
     ACDGestureLockItemView *itemView = [self itemViewWithTouchLocation:loc];
     //如果为空，返回
-    if (itemView == nil) return;
+    if (itemView == nil)
+        return;
     //如果已经存在，返回
-    if ([self.itemViewsM containsObject:itemView]) return;
+    if ([self.itemViewsM containsObject:itemView])
+        return;
     //添加
     [self.itemViewsM addObject:itemView];
     //记录密码
@@ -214,7 +221,8 @@
 - (ACDGestureLockItemView *)itemViewWithTouchLocation:(CGPoint)loc {
     ACDGestureLockItemView *itemView = nil;
     for (ACDGestureLockItemView *itemViewSub in self.subviews) {
-        if (!CGRectContainsPoint(itemViewSub.frame, loc)) continue;
+        if (!CGRectContainsPoint(itemViewSub.frame, loc))
+            continue;
         itemView = itemViewSub;
         break;
     }
@@ -231,7 +239,8 @@
 //绘制线条
 - (void)drawRect:(CGRect)rect {
     //数组为空直接返回
-    if (_itemViewsM == nil || _itemViewsM.count == 0) return;
+    if (_itemViewsM == nil || _itemViewsM.count == 0)
+        return;
     //获取上下文
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     //添加路径
@@ -277,7 +286,8 @@
 //计算方向：每添加一次itemView就计算一次
 - (void)calDirect {
     NSUInteger count = _itemViewsM.count;
-    if (_itemViewsM == nil || count <= 1) return;
+    if (_itemViewsM == nil || count <= 1)
+        return;
     //取出最后一个对象
     ACDGestureLockItemView *last_1_ItemView = _itemViewsM.lastObject;
     //倒数第二个
