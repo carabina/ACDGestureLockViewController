@@ -91,17 +91,21 @@
     [self lockHandle:touches];
     //设置密码
     if (GestureLockTypeSetPwd == _type) {
-        if (self.firstRightPWD == nil) { //第一次输入
+        if (self.firstRightPWD == nil) {
+            //第一次输入
             if (_setPWBeginBlock != nil)
                 _setPWBeginBlock();
         } else {
+            //第二次输出（确认）
             if (_setPWConfirmlock != nil)
                 _setPWConfirmlock();
         }
-    } else if (GestureLockTypeVeryfiPwd == _type) { //验证密码
+    } else if (GestureLockTypeVeryfiPwd == _type) {
+        //验证密码
         if (_verifyPWBeginBlock != nil)
             _verifyPWBeginBlock();
-    } else if (GestureLockTypeModifyPwd == _type) { //修改密码
+    } else if (GestureLockTypeModifyPwd == _type) {
+        //修改密码
         if (_modifyPwdBlock != nil)
             _modifyPwdBlock();
     }
