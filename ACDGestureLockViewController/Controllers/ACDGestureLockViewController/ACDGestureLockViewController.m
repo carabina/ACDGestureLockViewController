@@ -54,7 +54,6 @@
     [super viewDidLoad];
     self.extendedLayoutIncludesOpaqueBars = YES;
     [self vcPrepare];
-    [self dataTransfer];
     [self event];
 }
 
@@ -63,12 +62,9 @@
 - (void)vcPrepare {
     //设置背景色
     self.view.backgroundColor = ACDGestureLockViewBgColor;
-}
-
-//数据传输
-- (void)dataTransfer {
     [self.label showNormalMsg:self.msg];
     self.lockView.type = self.type;
+    // TODO:视图准备工作：处理navigation的rightButton
 }
 
 //实现各个代码块
@@ -77,6 +73,7 @@
     //开始输入：第一次
     self.lockView.setPWBeginBlock = ^() {
         [self.label showNormalMsg:GestureLockPWDTitleFirst];
+        self.navigationItem.rightBarButtonItem = self.resetItem;
     };
     //开始输入：确认
     self.lockView.setPWConfirmlock = ^() {
@@ -92,7 +89,6 @@
     self.lockView.setPWSErrorTwiceDiffBlock =
         ^(NSString *pwd1, NSString *pwdNow) {
             [self.label showWarnMsg:GestureLockPWDDiffTitle];
-            self.navigationItem.rightBarButtonItem = self.resetItem;
         };
     //第一次输入密码：正确
     self.lockView.setPWFirstRightBlock = ^() {
@@ -121,10 +117,8 @@
     self.lockView.verifyPWBeginBlock = ^() {
         [self.label showNormalMsg:GestureLockVerifyNormalTitle];
     };
-
-    //修改密码
+    //验证
     self.lockView.verifyPwdBlock = ^(NSString *pwd) {
-        self.navigationItem.rightBarButtonItem = self.forgetItem;
         BOOL res = [self.correctPwd isEqualToString:pwd];
 
         if (res) { //密码一致
@@ -152,7 +146,6 @@
     //修改
     self.lockView.modifyPwdBlock = ^() {
         [self.label showNormalMsg:self.msg];
-        self.navigationItem.rightBarButtonItem = self.forgetItem;
     };
 }
 
@@ -183,9 +176,11 @@
     } else if (GestureLockTypeVeryfiPwd == _type) {
         //验证密码
         self.msg = GestureLockVerifyNormalTitle;
+        self.navigationItem.rightBarButtonItem = self.forgetItem;
     } else if (GestureLockTypeModifyPwd == _type) {
         //修改密码
         self.msg = GestureLockModifyNormalTitle;
+        self.navigationItem.rightBarButtonItem = self.forgetItem;
     }
 }
 
