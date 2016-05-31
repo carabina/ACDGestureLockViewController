@@ -46,34 +46,30 @@
 }
 
 - (IBAction)onSetPwd:(UIButton *)sender {
-    ACDGestureLockViewController *gestureVC = [ACDGestureLockViewController
+    [ACDGestureLockViewController
         showSettingLockVCInVC:self
                  successBlock:^(ACDGestureLockViewController *lockVC,
                                 NSString *pwd) {
                      NSLog(@"%@", pwd);
                      userPwd = pwd;
-                     [lockVC dismiss:1.0];
+                     [lockVC dismiss:0.5f];
                  }];
-//    [self.navigationController pushViewController:gestureVC animated:YES];
 }
 
 - (IBAction)onVerifyPwd:(UIButton *)sender {
-    ACDGestureLockViewController *gestureVC = [ACDGestureLockViewController
-        showVerifyLockVCInVC:self
+    [ACDGestureLockViewController showVerifyLockVCInVC:self
         correctPassword:userPwd
         forgetPwdBlock:^{
             NSLog(@"忘记密码");
         }
         successBlock:^(ACDGestureLockViewController *lockVC, NSString *pwd) {
             NSLog(@"密码正确");
-            [lockVC dismiss:1.0];
+            [lockVC dismiss:0.5f];
         }];
-    //    [self.navigationController pushViewController:gestureVC animated:YES];
 }
 
 - (IBAction)onFindPwd:(UIButton *)sender {
-    ACDGestureLockViewController *gestureVC = [ACDGestureLockViewController
-        showModifyLockVCInVC:self
+    [ACDGestureLockViewController showModifyLockVCInVC:self
         correctPassword:userPwd
         forgetPwdBlock:^{
             NSLog(@"忘记密码");
@@ -81,9 +77,8 @@
         successBlock:^(ACDGestureLockViewController *lockVC, NSString *pwd) {
             NSLog(@"%@", pwd);
             userPwd = pwd;
-            [lockVC dismiss:1.0];
+            [lockVC dismiss:0.5f];
         }];
-    //    [self.navigationController pushViewController:gestureVC animated:YES];
 }
 
 @end

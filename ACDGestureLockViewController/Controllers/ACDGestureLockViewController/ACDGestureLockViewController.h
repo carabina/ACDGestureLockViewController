@@ -12,7 +12,7 @@ typedef NS_ENUM(NSInteger, GestureLockType) {
     //设置密码
     GestureLockTypeSetPwd,
     //验证密码
-    GestureLockTypeVeryfiPwd,
+    GestureLockTypeVerifyPwd,
     //修改密码
     GestureLockTypeModifyPwd,
 };
@@ -30,10 +30,9 @@ typedef NS_ENUM(NSInteger, GestureLockType) {
  *
  *  @return 返回一个用于设置密码的试图控制器
  */
-+ (instancetype)showSettingLockVCInVC:(UIViewController *)vc
-                         successBlock:
-                             (void (^)(ACDGestureLockViewController *lockVC,
-                                       NSString *pwd))successBlock;
++ (void)showSettingLockVCInVC:(UIViewController *)vc
+                 successBlock:(void (^)(ACDGestureLockViewController *lockVC,
+                                        NSString *pwd))successBlock;
 
 /**
  *  验证密码输入框
@@ -45,12 +44,11 @@ typedef NS_ENUM(NSInteger, GestureLockType) {
  *
  *  @return 返回一个用于验证密码是否正确地控制器
  */
-+ (instancetype)showVerifyLockVCInVC:(UIViewController *)vc
-                     correctPassword:(NSString *)correctPassword
-                      forgetPwdBlock:(void (^)())forgetPwdBlock
-                        successBlock:
-                            (void (^)(ACDGestureLockViewController *lockVC,
-                                      NSString *pwd))successBlock;
++ (void)showVerifyLockVCInVC:(UIViewController *)vc
+             correctPassword:(NSString *)correctPassword
+              forgetPwdBlock:(void (^)())forgetPwdBlock
+                successBlock:(void (^)(ACDGestureLockViewController *lockVC,
+                                       NSString *pwd))successBlock;
 
 /**
  *  验修改密码输入框
@@ -63,17 +61,16 @@ typedef NS_ENUM(NSInteger, GestureLockType) {
  *
  *  @return 返回一个用于修改密码的控制器
  */
-+ (instancetype)showModifyLockVCInVC:(UIViewController *)vc
-                     correctPassword:(NSString *)correctPassword
-                      forgetPwdBlock:(void (^)())forgetPwdBlock
-                        successBlock:
-                            (void (^)(ACDGestureLockViewController *lockVC,
-                                      NSString *pwd))successBlock;
++ (void)showModifyLockVCInVC:(UIViewController *)vc
+             correctPassword:(NSString *)correctPassword
+              forgetPwdBlock:(void (^)())forgetPwdBlock
+                successBlock:(void (^)(ACDGestureLockViewController *lockVC,
+                                       NSString *pwd))successBlock;
 
 /**
  *  密码操作成功后，调用此方法返回主调用者控制器
  *
- *  @param interval 动画持续时间
+ *  @param interval 延迟执行
  */
 - (void)dismiss:(NSTimeInterval)interval;
 

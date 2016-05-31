@@ -22,6 +22,7 @@
 		2D5D6E801CA24603006D7E2D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D5D6E6F1CA24603006D7E2D /* LaunchScreen.storyboard */; };
 		2D5D6E811CA24603006D7E2D /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2D5D6E711CA24603006D7E2D /* Info.plist */; };
 		2D5D6E821CA24603006D7E2D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D5D6E721CA24603006D7E2D /* main.m */; };
+		FBA964AD1CFD847D000768C4 /* ACDGestureLockNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = FBA964AC1CFD847D000768C4 /* ACDGestureLockNavigationController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		2D5D6E701CA24603006D7E2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2D5D6E711CA24603006D7E2D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D5D6E721CA24603006D7E2D /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		FBA964AB1CFD847D000768C4 /* ACDGestureLockNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACDGestureLockNavigationController.h; sourceTree = "<group>"; };
+		FBA964AC1CFD847D000768C4 /* ACDGestureLockNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACDGestureLockNavigationController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,7 @@
 			children = (
 				2D5D6E591CA24603006D7E2D /* ACDGestureLockViewController~ipad.xib */,
 				2D5D6E5A1CA24603006D7E2D /* ACDGestureLockViewController~iphone.xib */,
+				FBA964AA1CFD8468000768C4 /* GestureLockNavigationController */,
 				2D5D6E5B1CA24603006D7E2D /* GestureLockItemView */,
 				2D5D6E5E1CA24603006D7E2D /* GestureLockLabel */,
 				2D5D6E611CA24603006D7E2D /* GestureLockThumbnailView */,
@@ -190,6 +194,15 @@
 				2D5D6E721CA24603006D7E2D /* main.m */,
 			);
 			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FBA964AA1CFD8468000768C4 /* GestureLockNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				FBA964AB1CFD847D000768C4 /* ACDGestureLockNavigationController.h */,
+				FBA964AC1CFD847D000768C4 /* ACDGestureLockNavigationController.m */,
+			);
+			path = GestureLockNavigationController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -265,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FBA964AD1CFD847D000768C4 /* ACDGestureLockNavigationController.m in Sources */,
 				2D5D6E791CA24603006D7E2D /* ACDGestureLockLabel.m in Sources */,
 				2D5D6E7C1CA24603006D7E2D /* RootViewController.m in Sources */,
 				2D5D6E7A1CA24603006D7E2D /* ACDGestureLockThumbnailView.m in Sources */,

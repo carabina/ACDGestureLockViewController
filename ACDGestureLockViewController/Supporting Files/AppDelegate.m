@@ -66,6 +66,13 @@
             initWithRootViewController:[[RootViewController alloc]
                                            initWithNibName:@"RootViewController"
                                                     bundle:nil]];
+        _rootNav.navigationBar.translucent = NO;
+        _rootNav.navigationBar.backgroundColor =
+            [UIColor colorWithRed:0.118 green:0.608 blue:0.718 alpha:1.000];
+        _rootNav.navigationBar.tintColor =
+            [UIColor colorWithRed:0.118 green:0.608 blue:0.718 alpha:1.000];
+        _rootNav.navigationBar.barTintColor =
+            [UIColor colorWithRed:0.118 green:0.608 blue:0.718 alpha:1.000];
     }
     return _rootNav;
 }

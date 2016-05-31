@@ -12,19 +12,19 @@
 @interface ACDGestureLockView : UIView
 @property (nonatomic, assign) GestureLockType type;
 //开始输入，第一次
-@property (nonatomic, copy) void (^setPWBeginBlock)();
+@property (nonatomic, copy) void (^setPWDBeginBlock)();
 //开始输入，确认密码
-@property (nonatomic, copy) void (^setPWConfirmlock)();
+@property (nonatomic, copy) void (^setPWDConfirmlock)();
 //设置密码出错：长度不够
-@property (nonatomic, copy) void (^setPWSErrorLengthTooShortBlock)
+@property (nonatomic, copy) void (^setPWDErrorLengthTooShortBlock)
     (NSUInteger currentCount);
 //设置密码出错：两次密码不一致
-@property (nonatomic, copy) void (^setPWSErrorTwiceDiffBlock)
+@property (nonatomic, copy) void (^setPWDErrorTwiceDiffBlock)
     (NSString *pwd1, NSString *pwdNow);
 //设置密码：第一次输入正确
-@property (nonatomic, copy) void (^setPWFirstRightBlock)();
+@property (nonatomic, copy) void (^setPWDFirstRightBlock)();
 //再次密码输入一致
-@property (nonatomic, copy) void (^setPWTwiceSameBlock)(NSString *pwd);
+@property (nonatomic, copy) void (^setPWDTwiceSameBlock)(NSString *pwd);
 //验证密码开始
 @property (nonatomic, copy) void (^verifyPWBeginBlock)();
 //验证密码

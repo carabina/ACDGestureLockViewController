@@ -90,14 +90,14 @@
     if (GestureLockTypeSetPwd == self.type) {
         if (self.firstRightPWD == nil) {
             //第一次输入
-            if (self.setPWBeginBlock != nil)
-                self.setPWBeginBlock();
+            if (self.setPWDBeginBlock != nil)
+                self.setPWDBeginBlock();
         } else {
             //第二次输出（确认）
-            if (self.setPWConfirmlock != nil)
-                self.setPWConfirmlock();
+            if (self.setPWDConfirmlock != nil)
+                self.setPWDConfirmlock();
         }
-    } else if (GestureLockTypeVeryfiPwd == self.type) {
+    } else if (GestureLockTypeVerifyPwd == self.type) {
         //验证密码
         if (self.verifyPWBeginBlock != nil)
             self.verifyPWBeginBlock();
@@ -146,14 +146,14 @@
 - (void)setpwdCheck {
     NSUInteger count = self.itemViewsM.count;
     if (count < GestureLockMinItemCount) {
-        if (self.setPWSErrorLengthTooShortBlock != nil)
-            self.setPWSErrorLengthTooShortBlock(count);
+        if (self.setPWDErrorLengthTooShortBlock != nil)
+            self.setPWDErrorLengthTooShortBlock(count);
         return;
     }
     if (GestureLockTypeSetPwd == self.type) {
         //设置密码
         [self setpwd];
-    } else if (GestureLockTypeVeryfiPwd == self.type) {
+    } else if (GestureLockTypeVerifyPwd == self.type) {
         //验证密码
         if (self.verifyPwdBlock != nil)
             self.verifyPwdBlock(self.pwdM);
@@ -176,18 +176,18 @@
     if (self.firstRightPWD == nil) {
         // 第一次设置密码
         self.firstRightPWD = self.pwdM;
-        if (self.setPWFirstRightBlock != nil)
-            self.setPWFirstRightBlock();
+        if (self.setPWDFirstRightBlock != nil)
+            self.setPWDFirstRightBlock();
     } else {
         if (![self.firstRightPWD isEqualToString:self.pwdM]) {
             // 两次密码不一致
-            if (self.setPWSErrorTwiceDiffBlock != nil)
-                self.setPWSErrorTwiceDiffBlock(self.firstRightPWD, self.pwdM);
+            if (self.setPWDErrorTwiceDiffBlock != nil)
+                self.setPWDErrorTwiceDiffBlock(self.firstRightPWD, self.pwdM);
             return;
         } else {
             // 再次密码输入一致
-            if (self.setPWTwiceSameBlock != nil)
-                self.setPWTwiceSameBlock(self.firstRightPWD);
+            if (self.setPWDTwiceSameBlock != nil)
+                self.setPWDTwiceSameBlock(self.firstRightPWD);
         }
     }
 }
