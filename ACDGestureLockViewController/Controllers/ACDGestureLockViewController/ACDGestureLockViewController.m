@@ -53,7 +53,7 @@
     [super viewWillAppear:animated];
     self.extendedLayoutIncludesOpaqueBars = YES;
     [self setNeedsStatusBarAppearanceUpdate];
-    self.navigationItem.leftBarButtonItem = self.backItem;
+    // self.navigationItem.leftBarButtonItem = self.backItem;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -249,6 +249,7 @@
                                         NSString *pwd))successBlock {
     ACDGestureLockViewController *lockVC = [self lockVC:vc];
     lockVC.title = @"设置密码";
+    lockVC.navigationItem.leftBarButtonItem = lockVC.backItem;
     lockVC.type = GestureLockTypeSetPwd;
     lockVC.successBlock = successBlock;
 }
