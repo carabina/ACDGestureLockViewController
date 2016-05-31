@@ -244,42 +244,48 @@
 
 #pragma mark - Public Methods
 // 展示设置密码控制器
-+ (void)showSettingLockVCInVC:(UIViewController *)vc
-                 successBlock:(void (^)(ACDGestureLockViewController *lockVC,
-                                        NSString *pwd))successBlock {
++ (instancetype)showSettingLockVCInVC:(UIViewController *)vc
+                         successBlock:
+                             (void (^)(ACDGestureLockViewController *lockVC,
+                                       NSString *pwd))successBlock {
     ACDGestureLockViewController *lockVC = [self lockVC:vc];
     lockVC.title = @"设置密码";
     lockVC.navigationItem.leftBarButtonItem = lockVC.backItem;
     lockVC.type = GestureLockTypeSetPwd;
     lockVC.successBlock = successBlock;
+    return lockVC;
 }
 
 // 展示验证密码输入框
-+ (void)showVerifyLockVCInVC:(UIViewController *)vc
-             correctPassword:(NSString *)correctPassword
-              forgetPwdBlock:(void (^)())forgetPwdBlock
-                successBlock:(void (^)(ACDGestureLockViewController *lockVC,
-                                       NSString *pwd))successBlock {
++ (instancetype)showVerifyLockVCInVC:(UIViewController *)vc
+                     correctPassword:(NSString *)correctPassword
+                      forgetPwdBlock:(void (^)())forgetPwdBlock
+                        successBlock:
+                            (void (^)(ACDGestureLockViewController *lockVC,
+                                      NSString *pwd))successBlock {
     ACDGestureLockViewController *lockVC = [self lockVC:vc];
     lockVC.title = @"手势解锁";
     lockVC.type = GestureLockTypeVerifyPwd;
     lockVC.successBlock = successBlock;
     lockVC.forgetPwdBlock = forgetPwdBlock;
     lockVC.correctPwd = correctPassword;
+    return lockVC;
 }
 
 // 展示修改密码输入框
-+ (void)showModifyLockVCInVC:(UIViewController *)vc
-             correctPassword:(NSString *)correctPassword
-              forgetPwdBlock:(void (^)())forgetPwdBlock
-                successBlock:(void (^)(ACDGestureLockViewController *lockVC,
-                                       NSString *pwd))successBlock {
++ (instancetype)showModifyLockVCInVC:(UIViewController *)vc
+                     correctPassword:(NSString *)correctPassword
+                      forgetPwdBlock:(void (^)())forgetPwdBlock
+                        successBlock:
+                            (void (^)(ACDGestureLockViewController *lockVC,
+                                      NSString *pwd))successBlock {
     ACDGestureLockViewController *lockVC = [self lockVC:vc];
     lockVC.title = @"修改密码";
     lockVC.type = GestureLockTypeModifyPwd;
     lockVC.successBlock = successBlock;
     lockVC.forgetPwdBlock = forgetPwdBlock;
     lockVC.correctPwd = correctPassword;
+    return lockVC;
 }
 
 - (void)dismiss:(NSTimeInterval)interval {

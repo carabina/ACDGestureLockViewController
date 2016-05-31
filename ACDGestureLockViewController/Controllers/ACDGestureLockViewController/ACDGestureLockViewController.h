@@ -30,7 +30,7 @@ typedef NS_ENUM(NSInteger, GestureLockType) {
  *
  *  @return 返回一个用于设置密码的试图控制器
  */
-+ (void)showSettingLockVCInVC:(UIViewController *)vc
++ (instancetype)showSettingLockVCInVC:(UIViewController *)vc
                  successBlock:(void (^)(ACDGestureLockViewController *lockVC,
                                         NSString *pwd))successBlock;
 
@@ -44,7 +44,7 @@ typedef NS_ENUM(NSInteger, GestureLockType) {
  *
  *  @return 返回一个用于验证密码是否正确地控制器
  */
-+ (void)showVerifyLockVCInVC:(UIViewController *)vc
++ (instancetype)showVerifyLockVCInVC:(UIViewController *)vc
              correctPassword:(NSString *)correctPassword
               forgetPwdBlock:(void (^)())forgetPwdBlock
                 successBlock:(void (^)(ACDGestureLockViewController *lockVC,
@@ -61,7 +61,7 @@ typedef NS_ENUM(NSInteger, GestureLockType) {
  *
  *  @return 返回一个用于修改密码的控制器
  */
-+ (void)showModifyLockVCInVC:(UIViewController *)vc
++ (instancetype)showModifyLockVCInVC:(UIViewController *)vc
              correctPassword:(NSString *)correctPassword
               forgetPwdBlock:(void (^)())forgetPwdBlock
                 successBlock:(void (^)(ACDGestureLockViewController *lockVC,
