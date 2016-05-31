@@ -51,7 +51,8 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    // [self setNeedsStatusBarAppearanceUpdate];
+    self.extendedLayoutIncludesOpaqueBars = YES;
+    [self setNeedsStatusBarAppearanceUpdate];
     self.navigationItem.leftBarButtonItem = self.backItem;
 }
 
