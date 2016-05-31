@@ -11,10 +11,7 @@
 #import "ACDGestureLockView.h"
 #import "ACDGestureLockViewController.h"
 
-@interface ACDGestureLockViewController () {
-    NSString *userPassword; //临时存储用户设置的密码
-}
-
+@interface ACDGestureLockViewController ()
 #pragma mark - Block
 @property (nonatomic, copy) void (^successBlock)
     (ACDGestureLockViewController *lockVC, NSString *pwd);
@@ -40,9 +37,10 @@
     NSString *deviceType = [UIDevice currentDevice].model;
     if ([deviceType rangeOfString:@"iPad"].location != NSNotFound) {
         return UIInterfaceOrientationMaskLandscape;
+    } else {
+        //如果是iphone
+        return UIInterfaceOrientationMaskPortrait;
     }
-    //如果是iphone
-    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,7 +62,6 @@
     self.view.backgroundColor = ACDGestureLockViewBgColor;
     [self.label showNormalMsg:self.msg];
     self.lockView.type = self.type;
-    // TODO:视图准备工作：处理navigation的rightButton
 }
 
 //实现各个代码块
@@ -97,22 +94,20 @@
     //再次输入密码一致
     self.lockView.setPWTwiceSameBlock = ^(NSString *pwd) {
         [self.label showNormalMsg:GestureLockPWSuccessTitle];
-        //随后返回给调用着
-        userPassword = pwd;
-
         //禁用交互
         self.view.userInteractionEnabled = NO;
-        if (_successBlock != nil)
-            _successBlock(self, pwd);
-        if (GestureLockTypeModifyPwd == _type) {
-            dispatch_after(
-                dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5f * NSEC_PER_SEC)),
-                dispatch_get_main_queue(), ^{
-                    [self.navigationController popViewControllerAnimated:YES];
-                });
-        }
+        if (self.successBlock != nil)
+            self.successBlock(self, pwd);
+        //        if (GestureLockTypeModifyPwd == self.type) {
+        //            dispatch_after(
+        //                dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.5f *
+        //                NSEC_PER_SEC)),
+        //                dispatch_get_main_queue(), ^{
+        //                    [self.navigationController
+        //                    popViewControllerAnimated:YES];
+        //                });
+        //        }
     };
-
     //验证密码
     self.lockView.verifyPWBeginBlock = ^() {
         [self.label showNormalMsg:GestureLockVerifyNormalTitle];
@@ -120,21 +115,19 @@
     //验证
     self.lockView.verifyPwdBlock = ^(NSString *pwd) {
         BOOL res = [self.correctPwd isEqualToString:pwd];
-
-        if (res) { //密码一致
+        if (res) {
+            //密码一致
             [self.label showNormalMsg:GestureLockVerifySuccesslTitle];
-            if (GestureLockTypeVeryfiPwd == _type) {
+            if (GestureLockTypeVeryfiPwd == self.type) {
                 //禁用交互
                 self.view.userInteractionEnabled = NO;
-            } else if (GestureLockTypeModifyPwd == _type) {
+                if (self.successBlock != nil)
+                    self.successBlock(self, pwd);
+            } else if (GestureLockTypeModifyPwd == self.type) {
                 //修改密码
                 [self.label showNormalMsg:GestureLockPWDTitleFirst];
                 self.navigationItem.rightBarButtonItem = nil;
                 self.modifyCurrentTitle = GestureLockPWDTitleFirst;
-            }
-            if (GestureLockTypeVeryfiPwd == _type) {
-                if (_successBlock != nil)
-                    _successBlock(self, pwd);
             }
         } else {
             //密码错误
@@ -149,10 +142,6 @@
     };
 }
 
-- (void)dismiss {
-    [self dismiss:0];
-}
-
 //密码重设
 - (void)setPwdReset {
     [self.label showNormalMsg:GestureLockPWDTitleFirst];
@@ -164,7 +153,6 @@
 
 - (void)setType:(GestureLockType)type {
     _type = type;
-    //根据type自动调整label文字
     [self labelWithType];
 }
 
@@ -188,6 +176,19 @@
     [self dismiss:0];
     if (_forgetPwdBlock != nil)
         _forgetPwdBlock();
+}
+
+// 初始化lockVC控制器
++ (instancetype)lockVC:(UIViewController *)vc {
+    ACDGestureLockViewController *lockVC =
+        [[ACDGestureLockViewController alloc] init];
+    lockVC.vc = vc;
+
+    UINavigationController *nav =
+        [[UINavigationController alloc] initWithRootViewController:lockVC];
+    [vc presentViewController:nav animated:YES completion:nil];
+
+    return lockVC;
 }
 
 #pragma mark - Access Methods
@@ -267,30 +268,12 @@
     return lockVC;
 }
 
-// 初始化lockVC控制器
-+ (instancetype)lockVC:(UIViewController *)vc {
-    ACDGestureLockViewController *lockVC =
-        [[ACDGestureLockViewController alloc] init];
-    lockVC.vc = vc;
-    return lockVC;
-}
-
-- (NSString *)userPwd {
-    return userPassword;
-}
-
 - (void)dismiss:(NSTimeInterval)interval {
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-#pragma mark - Unuse Methods
-- (IBAction)modifyPwdAction:(id)sender {
-    ACDGestureLockViewController *lockVC =
-        [[ACDGestureLockViewController alloc] init];
-    lockVC.title = @"修改密码";
-    //设置类型
-    lockVC.type = GestureLockTypeModifyPwd;
-    [self.navigationController pushViewController:lockVC animated:YES];
+    dispatch_after(
+        dispatch_time(DISPATCH_TIME_NOW, (int64_t)(interval * NSEC_PER_SEC)),
+        dispatch_get_main_queue(), ^{
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
 }
 
 @end

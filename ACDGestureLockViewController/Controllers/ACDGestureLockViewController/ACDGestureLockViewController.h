@@ -77,11 +77,4 @@ typedef NS_ENUM(NSInteger, GestureLockType) {
  */
 - (void)dismiss:(NSTimeInterval)interval;
 
-/**
- *  返回用户设置的密码给调用者
- *
- *  @return 在对密码操作成功后，应该在successBlock中调用该函数
- */
-- (NSString *)userPwd;
-
 @end

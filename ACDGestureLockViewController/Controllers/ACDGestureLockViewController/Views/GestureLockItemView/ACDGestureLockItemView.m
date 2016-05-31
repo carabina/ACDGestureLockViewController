@@ -10,18 +10,15 @@
 #import "ACDGestureLockItemView.h"
 
 @interface ACDGestureLockItemView ()
-
 //圆环rect
 @property (nonatomic, assign) CGRect calRect;
 //选中的rect
 @property (nonatomic, assign) CGRect selectedRect;
 //角度
 @property (nonatomic, assign) CGFloat angle;
-
 @end
 
 @implementation ACDGestureLockItemView
-
 #pragma mark - init
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

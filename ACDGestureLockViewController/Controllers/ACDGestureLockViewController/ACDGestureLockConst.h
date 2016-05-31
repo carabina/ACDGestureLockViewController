@@ -49,8 +49,7 @@ static NSUInteger GestureLockMinItemCount = 4;
 static NSString *const GestureLockPWDTitleFirst = @"请滑动设置新密码";
 
 //设置密码提示文字：确认
-static NSString *const GestureLockPWDTitleConfirm = @"请"
-                                                    @"再次输入确认密码";
+static NSString *const GestureLockPWDTitleConfirm = @"请再次输入确认密码";
 
 //设置密码提示文字：再次密码不一致
 static NSString *const GestureLockPWDDiffTitle = @"再次密码输入不一致";

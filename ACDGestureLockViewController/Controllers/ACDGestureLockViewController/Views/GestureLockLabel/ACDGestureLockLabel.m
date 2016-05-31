@@ -11,7 +11,6 @@
 #import "CALayer+Animation.h"
 
 @implementation ACDGestureLockLabel
-
 #pragma mark - init
 - (instancetype)init {
     self = [super init];
@@ -43,17 +42,13 @@
     self.font = [UIFont systemFontOfSize:16.0f];
 }
 
-#pragma mark - pub methods
-//普通提示信息
+#pragma mark - Public methods
 - (void)showNormalMsg:(NSString *)msg {
     self.text = msg;
-    //    self.textColor = GestureLockTipsLabelColor;
 }
 
-//警示信息
 - (void)showWarnMsg:(NSString *)msg {
     self.text = msg;
-    //    self.textColor = GestureLockTipsLabelColor;
     [self.layer shake];
 }
 

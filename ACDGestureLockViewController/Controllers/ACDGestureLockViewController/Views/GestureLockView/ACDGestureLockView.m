@@ -14,23 +14,21 @@
     CGFloat CircleMarginValue;
 }
 
-//装itemView的可变数组
+// 装itemView的可变数组
 @property (nonatomic, strong) NSMutableArray *itemViewsM;
 
-//临时密码记录器
+// 记录临时密码
 @property (nonatomic, copy) NSMutableString *pwdM;
 
-//设置密码：第一次设置的正确的密码
+// 设置密码：第一次设置的正确的密码
 @property (nonatomic, copy) NSString *firstRightPWD;
 
-//修改密码过程中的验证旧密码正确
+// 修改密码过程中，验证旧密码正确
 @property (nonatomic, assign) BOOL modify_VeriryOldRight;
-
 @end
 
 @implementation ACDGestureLockView
-
-#pragma mark - Life Cycle
+#pragma mark - Life cycle
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
@@ -54,8 +52,8 @@
     CGFloat itemViewWH = (self.frame.size.width - 4 * CircleMarginValue) / 3.0f;
     [self.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger idx,
                                                 BOOL *stop) {
-        NSUInteger col = idx % 3; //列
-        NSUInteger row = idx / 3; //行
+        NSUInteger col = idx % 3;
+        NSUInteger row = idx / 3;
         CGFloat x = CircleMarginValue * (col + 1) + col * itemViewWH;
         CGFloat y = CircleMarginValue * (row + 1) + row * itemViewWH;
         CGRect frame = CGRectMake(x, y, itemViewWH, itemViewWH);
@@ -69,9 +67,8 @@
 - (void)lockViewPrepare {
     self.backgroundColor = [UIColor clearColor];
     for (NSUInteger i = 0; i < 9; i++) {
-        //加载九宫格所需的九个view
         ACDGestureLockItemView *itemView =
-            [[ACDGestureLockItemView alloc] init];
+            [[ACDGestureLockItemView alloc] initWithFrame:CGRectZero];
         [self addSubview:itemView];
     }
     [self checkDevice];
@@ -90,24 +87,24 @@
     //解锁处理
     [self lockHandle:touches];
     //设置密码
-    if (GestureLockTypeSetPwd == _type) {
+    if (GestureLockTypeSetPwd == self.type) {
         if (self.firstRightPWD == nil) {
             //第一次输入
-            if (_setPWBeginBlock != nil)
-                _setPWBeginBlock();
+            if (self.setPWBeginBlock != nil)
+                self.setPWBeginBlock();
         } else {
             //第二次输出（确认）
-            if (_setPWConfirmlock != nil)
-                _setPWConfirmlock();
+            if (self.setPWConfirmlock != nil)
+                self.setPWConfirmlock();
         }
-    } else if (GestureLockTypeVeryfiPwd == _type) {
+    } else if (GestureLockTypeVeryfiPwd == self.type) {
         //验证密码
-        if (_verifyPWBeginBlock != nil)
-            _verifyPWBeginBlock();
-    } else if (GestureLockTypeModifyPwd == _type) {
+        if (self.verifyPWBeginBlock != nil)
+            self.verifyPWBeginBlock();
+    } else if (GestureLockTypeModifyPwd == self.type) {
         //修改密码
-        if (_modifyPwdBlock != nil)
-            _modifyPwdBlock();
+        if (self.modifyPwdBlock != nil)
+            self.modifyPwdBlock();
     }
 }
 
@@ -149,20 +146,22 @@
 - (void)setpwdCheck {
     NSUInteger count = self.itemViewsM.count;
     if (count < GestureLockMinItemCount) {
-        if (_setPWSErrorLengthTooShortBlock != nil)
-            _setPWSErrorLengthTooShortBlock(count);
+        if (self.setPWSErrorLengthTooShortBlock != nil)
+            self.setPWSErrorLengthTooShortBlock(count);
         return;
     }
-    if (GestureLockTypeSetPwd == _type) {
+    if (GestureLockTypeSetPwd == self.type) {
         //设置密码
         [self setpwd];
-    } else if (GestureLockTypeVeryfiPwd == _type) { //验证密码
-        if (_verifyPwdBlock != nil)
-            _verifyPwdBlock(self.pwdM);
-    } else if (GestureLockTypeModifyPwd == _type) { //修改密码
-        if (!_modify_VeriryOldRight) {
-            if (_verifyPwdBlock != nil) {
-                _modify_VeriryOldRight = _verifyPwdBlock(self.pwdM);
+    } else if (GestureLockTypeVeryfiPwd == self.type) {
+        //验证密码
+        if (self.verifyPwdBlock != nil)
+            self.verifyPwdBlock(self.pwdM);
+    } else if (GestureLockTypeModifyPwd == self.type) {
+        //修改密码
+        if (!self.modify_VeriryOldRight) {
+            if (self.verifyPwdBlock != nil) {
+                self.modify_VeriryOldRight = self.verifyPwdBlock(self.pwdM);
             }
         } else {
             //设置密码
@@ -174,19 +173,21 @@
 //设置密码
 - (void)setpwd {
     //密码合法
-    if (self.firstRightPWD == nil) { // 第一次设置密码
+    if (self.firstRightPWD == nil) {
+        // 第一次设置密码
         self.firstRightPWD = self.pwdM;
-        if (_setPWFirstRightBlock != nil)
-            _setPWFirstRightBlock();
+        if (self.setPWFirstRightBlock != nil)
+            self.setPWFirstRightBlock();
     } else {
         if (![self.firstRightPWD isEqualToString:self.pwdM]) {
-            //两次密码不一致
-            if (_setPWSErrorTwiceDiffBlock != nil)
-                _setPWSErrorTwiceDiffBlock(self.firstRightPWD, self.pwdM);
+            // 两次密码不一致
+            if (self.setPWSErrorTwiceDiffBlock != nil)
+                self.setPWSErrorTwiceDiffBlock(self.firstRightPWD, self.pwdM);
             return;
-        } else { //再次密码输入一致
-            if (_setPWTwiceSameBlock != nil)
-                _setPWTwiceSameBlock(self.firstRightPWD);
+        } else {
+            // 再次密码输入一致
+            if (self.setPWTwiceSameBlock != nil)
+                self.setPWTwiceSameBlock(self.firstRightPWD);
         }
     }
 }
@@ -239,7 +240,7 @@
     self.firstRightPWD = nil;
 }
 
-#pragma mark - drawer
+#pragma mark - Drawer
 //绘制线条
 - (void)drawRect:(CGRect)rect {
     //数组为空直接返回
@@ -336,7 +337,7 @@
     }
 }
 
-#pragma mark - access methods
+#pragma mark - Access methods
 - (NSMutableString *)pwdM {
     if (_pwdM == nil) {
         _pwdM = [NSMutableString string];

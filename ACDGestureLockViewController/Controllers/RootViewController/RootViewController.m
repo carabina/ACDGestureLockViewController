@@ -35,8 +35,9 @@
     NSString *deviceType = [UIDevice currentDevice].model;
     if ([deviceType rangeOfString:@"iPad"].location != NSNotFound) {
         return UIInterfaceOrientationMaskLandscape;
+    } else {
+        return UIInterfaceOrientationMaskPortrait;
     }
-    return UIInterfaceOrientationMaskPortrait;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -49,12 +50,11 @@
         showSettingLockVCInVC:self
                  successBlock:^(ACDGestureLockViewController *lockVC,
                                 NSString *pwd) {
-                     //获取用户设置的密码
-                     userPwd = [lockVC userPwd];
-                     NSLog(@"%@", userPwd);
-                     [lockVC dismiss:1.0f];
+                     NSLog(@"%@", pwd);
+                     userPwd = pwd;
+                     [lockVC dismiss:1.0];
                  }];
-    [self.navigationController pushViewController:gestureVC animated:YES];
+//    [self.navigationController pushViewController:gestureVC animated:YES];
 }
 
 - (IBAction)onVerifyPwd:(UIButton *)sender {
@@ -66,9 +66,9 @@
         }
         successBlock:^(ACDGestureLockViewController *lockVC, NSString *pwd) {
             NSLog(@"密码正确");
-            [lockVC dismiss:1.0f];
+            [lockVC dismiss:1.0];
         }];
-    [self.navigationController pushViewController:gestureVC animated:YES];
+    //    [self.navigationController pushViewController:gestureVC animated:YES];
 }
 
 - (IBAction)onFindPwd:(UIButton *)sender {
@@ -79,10 +79,11 @@
             NSLog(@"忘记密码");
         }
         successBlock:^(ACDGestureLockViewController *lockVC, NSString *pwd) {
-            NSLog(@"%@", [lockVC userPwd]);
-            [lockVC dismiss:1.0f];
+            NSLog(@"%@", pwd);
+            userPwd = pwd;
+            [lockVC dismiss:1.0];
         }];
-    [self.navigationController pushViewController:gestureVC animated:YES];
+    //    [self.navigationController pushViewController:gestureVC animated:YES];
 }
 
 @end
