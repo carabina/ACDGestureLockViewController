@@ -19,6 +19,8 @@
 #define GestureLockCircleLineSelectedColor rgba(41, 171, 194, 1)
 // 提示文字颜色
 #define GestureLockTipsLabelColor rgba(120, 130, 140, 1)
+// 警告文字颜色
+#define GestureLockWarnLabelColor rgba(183, 39, 18, 1)
 // 实心圆颜色
 #define GestureLockCircleLineColor [UIColor redColor]
 // 背景色

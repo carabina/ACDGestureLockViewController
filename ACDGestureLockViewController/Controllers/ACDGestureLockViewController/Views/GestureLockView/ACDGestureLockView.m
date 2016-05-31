@@ -23,7 +23,7 @@
 // 设置密码：第一次设置的正确的密码
 @property (nonatomic, copy) NSString *firstRightPWD;
 
-// 修改密码过程中，验证旧密码正确
+// 修改密码过程中，验证旧密码是否正确
 @property (nonatomic, assign) BOOL modify_VeriryOldRight;
 @end
 

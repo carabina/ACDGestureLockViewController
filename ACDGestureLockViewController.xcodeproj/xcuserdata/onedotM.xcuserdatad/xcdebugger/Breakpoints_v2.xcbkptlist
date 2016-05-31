@@ -10,11 +10,27 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-            timestampString = "486381856.109874"
+            timestampString = "486384110.804156"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "161"
+            endingLineNumber = "161"
+            landmarkName = "-setPwdReset"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
+            timestampString = "486384014.13821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "-event"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-            timestampString = "486381856.109874"
+            timestampString = "486384014.13821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "158"
-            endingLineNumber = "158"
+            startingLineNumber = "106"
+            endingLineNumber = "106"
             landmarkName = "-event"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,39 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-            timestampString = "486381697.606259"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "84"
-            endingLineNumber = "84"
-            landmarkName = "-event"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-            timestampString = "486381748.076506"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "107"
-            endingLineNumber = "107"
-            landmarkName = "-event"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-            timestampString = "486381754.770476"
+            timestampString = "486384014.13821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "111"
@@ -90,60 +74,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-            timestampString = "486381894.950626"
+            timestampString = "486384014.13821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
             endingLineNumber = "120"
             landmarkName = "-event"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[ACDGestureLockViewController event]_block_invoke.99"
-                  moduleName = "ACDGestureLockViewController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/onedotM/Desktop/Project/ACDKit/ACDGestureLockViewController/ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-                  timestampString = "486381894.968076"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "376">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.104"
-                  moduleName = "ACDGestureLockViewController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/onedotM/Desktop/Project/ACDKit/ACDGestureLockViewController/ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-                  timestampString = "486381894.968302"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.105"
-                  moduleName = "ACDGestureLockViewController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/onedotM/Desktop/Project/ACDKit/ACDGestureLockViewController/ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-                  timestampString = "486381894.968453"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -153,60 +90,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-            timestampString = "486381908.237116"
+            timestampString = "486384014.13821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "125"
             endingLineNumber = "125"
             landmarkName = "-event"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__37-[ACDGestureLockViewController event]_block_invoke.99"
-                  moduleName = "ACDGestureLockViewController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/onedotM/Desktop/Project/ACDKit/ACDGestureLockViewController/ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-                  timestampString = "486381908.238537"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "376">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__copy_helper_block_.104"
-                  moduleName = "ACDGestureLockViewController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/onedotM/Desktop/Project/ACDKit/ACDGestureLockViewController/ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-                  timestampString = "486381908.238772"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "64">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__destroy_helper_block_.105"
-                  moduleName = "ACDGestureLockViewController"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/onedotM/Desktop/Project/ACDKit/ACDGestureLockViewController/ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
-                  timestampString = "486381908.238931"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "126"
-                  endingLineNumber = "126"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/Views/GestureLockView/ACDGestureLockView.m"
+            timestampString = "486382718.840264"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "-setpwdCheck"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
+            timestampString = "486384014.13821"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "128"
+            endingLineNumber = "128"
+            landmarkName = "-event"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/Views/GestureLockView/ACDGestureLockView.m"
+            timestampString = "486383712.510664"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "176"
+            endingLineNumber = "176"
+            landmarkName = "-setpwd"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "ACDGestureLockViewController/Controllers/ACDGestureLockViewController/ACDGestureLockViewController.m"
+            timestampString = "486384110.804156"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "-event"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

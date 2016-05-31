@@ -45,10 +45,12 @@
 #pragma mark - Public methods
 - (void)showNormalMsg:(NSString *)msg {
     self.text = msg;
+    self.textColor = GestureLockTipsLabelColor;
 }
 
 - (void)showWarnMsg:(NSString *)msg {
     self.text = msg;
+    self.textColor = GestureLockWarnLabelColor;
     [self.layer shake];
 }
 

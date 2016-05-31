@@ -28,7 +28,6 @@
 @property (nonatomic, strong) UIBarButtonItem *backItem;
 
 @property (nonatomic, copy) NSString *msg;
-@property (nonatomic, copy) NSString *modifyCurrentTitle;
 
 @property (nonatomic, weak) IBOutlet ACDGestureLockLabel *label;
 @property (nonatomic, weak) IBOutlet ACDGestureLockView *lockView;
@@ -105,6 +104,7 @@
     //第一次输入密码：正确
     self.lockView.setPWDFirstRightBlock = ^() {
         [self.label showNormalMsg:GestureLockPWDTitleConfirm];
+        self.navigationItem.rightBarButtonItem = self.resetItem;
     };
     //再次输入密码一致
     self.lockView.setPWDTwiceSameBlock = ^(NSString *pwd) {
@@ -134,7 +134,7 @@
                 //修改密码
                 [self.label showNormalMsg:GestureLockPWDTitleFirst];
                 self.navigationItem.rightBarButtonItem = nil;
-                self.modifyCurrentTitle = GestureLockModifyNormalTitle;
+                self.msg = nil;
             }
         } else {
             //密码错误
@@ -145,7 +145,10 @@
 
     //修改
     self.lockView.modifyPwdBlock = ^() {
-        [self.label showNormalMsg:self.msg];
+        if ([self.msg isEqualToString:GestureLockModifyNormalTitle]) {
+            [self.label showNormalMsg:self.msg];
+        }
+
     };
 }
 
