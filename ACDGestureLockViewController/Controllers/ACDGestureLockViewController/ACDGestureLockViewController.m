@@ -80,6 +80,7 @@
     //设置密码
     //开始输入：第一次
     self.lockView.setPWDBeginBlock = ^() {
+        [self.label showNormalMsg:GestureLockPWDTitleFirst];
         self.navigationItem.rightBarButtonItem = self.resetItem;
     };
     //开始输入：确认
